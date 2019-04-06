@@ -1,1 +1,50 @@
-<h1>Make a Reservation</h1>
+<div id="page">
+
+    <div id="content">
+        <h1 id="title">Create a Reservation</h1>
+
+        <div id="reservation">
+            <form action="" id="reservationForm">
+
+                <label for="arrDate">Arrival Date</label>
+                <input type="date" id="arrDate" name="arrivalDate" placeholder="">
+                <br>
+
+                <label for="depDate">Departure Date</label>
+                <input type="date" id="deptDate" name="departureDate" placeholder="">
+                <br>
+
+                <label for="numGuests">Number of Guests</label>
+                <input type="number" id="numGuests" name="NumOfGuests" placeholder="">
+                <br>
+
+                <label for="requests">Special Requests</label>
+                <textarea id="requests" name="requests" placeholder="Write something.."
+                    style="height:100px"></textarea>
+                <br>
+
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" placeholder="Your name..">
+                <br>
+
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Your last name..">
+                <br>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Your email..">
+                <br>
+
+                <div id="roomType">
+                    <label>Type of Room:</label>
+                    <input type="radio" name="roomType" value="deluxe">Deluxe 
+                    <input type="radio" name="roomType" value="suite"> Suite 
+                    <input type="radio" name="roomType" value="regular"> Regular <br>
+                </div>
+                <br><br>
+
+                <a href="/summary"><button type="button" id="submit">Submit</button></a>
+            </form>
+        </div>
+    </div>
+</div>
