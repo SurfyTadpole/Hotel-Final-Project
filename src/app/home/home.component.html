@@ -1,7 +1,64 @@
 <h1 id="title">Welcome to The Pleasant Inn!</h1>
 
+<div class="slideshow-container">
+
+  <div class="mySlides fade">
+    <img src="assets/img/hotelroom.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides fade">
+    <img src="assets/img/breakfast2.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides fade">
+    <img src="assets/img/pet.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides fade">
+    <img src="assets/img/lobby.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides fade">
+    <img src="assets/img/pool2.jpg" style="width:100%">
+  </div>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+</div>
+
+<p>Here at The Pleasant Inn, the customer's comfort and experience is our top priority. We provide quality at a low
+  price. Feel free to explore our site further or create a reservation right away!</p>
+
 <p>
   Click below to create a reservation
 </p>
 
-<button routerLink="/reservation" type="button" id="create">Create a Reservation</button>
+<button type="button" onclick="window.location.href = '/reservation';" id="create">Create a Reservation</button>
+<script>
+    var slideIndex = 0;
+    showSlides();
+  
+    function showSlides() {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("dot");
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) { slideIndex = 1 }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+      setTimeout(showSlides, 3000); // Change image every 2 seconds
+    }
+  </script>
