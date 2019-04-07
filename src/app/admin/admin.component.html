@@ -1,7 +1,24 @@
-<h1>Admin Page</h1>
+<h1 id="title">Admin</h1>
 
-<h2>Rooms Available:</h2>
+<div id="login">
+    <form>
+        <div>
+            <label for="username"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="username" required>
 
-<h2>Room Rates:</h2>
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required>
 
-<h2>Current Bookings:</h2>
+            <button type="button" id="loginbtn">Login</button>
+        </div>
+    </form>
+</div>
+
+<div id="admin">
+    <h3>Room Rates:</h3>
+    <h3>Current Reservations:</h3>
+    <h3>Current Admins:</h3>
+
+    <button type="button" id="edit">Edit</button>
+    <button type="button" id="edit">Update</button>
+</div>
