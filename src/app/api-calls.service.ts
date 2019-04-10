@@ -11,10 +11,11 @@ export class ApiCallsService {
     private http: HttpClient
   ) { }
 
-  movieCallUrl: string = 'http://www.omdbapi.com/?i=tt3896198&apikey=36f49728';
+  // Example  
+  // movieCallUrl: string = 'http://www.omdbapi.com/?t=avengers+endgame&apikey=36f49728';
 
-  getMovieTitle() {
-    return this.http.get<any[]>(this.movieCallUrl);
-  }
+  // getMovieTitle() {
+  //   return this.http.get<any[]>(this.movieCallUrl);
+  // }
 
 }

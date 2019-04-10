@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiCallsService } from '../api-calls.service';
 import { Observable } from 'rxjs';
+import { Movie } from '../movie'
 
 @Component({
   selector: 'app-admin',
@@ -9,21 +10,22 @@ import { Observable } from 'rxjs';
 })
 export class AdminComponent implements OnInit {
 
-  movieData: any[];
-  movieTitle: string;
+  movieData: Movie;
 
   constructor(private apiService: ApiCallsService) { }
 
   ngOnInit() {
-    this.getMovieTitle();
+    // this.getMovieTitle();
   }
 
-  getMovieTitle(): void {
-    this.apiService.getMovieTitle()
-      .subscribe((res: any[]) => {
-        console.log(res);
-        this.movieData = res;        
-      });
-  }
+  // Example
+  // getMovieTitle(): void {
+  //   this.apiService.getMovieTitle()
+  //     .subscribe(data => {
+  //       console.log(data);
+  //       this.movieData = new Movie(data); 
+  //       console.log(this.movieData.title);      
+  //     });
+  // }
 
 }
