@@ -23,12 +23,12 @@ router.get('/admin/:uname', (req, res) => {
 //--------End of Admin Login Locations--------
 
 //Adds admin login - post with uname and pword in url
-router.post('/api/admin/add/:uname/:pword',(req, res) => {
+router.post('/admin/add/:uname/:pword',(req, res) => {
   addAdminLogin(req.params['uname'], req.params['pword'], res)
 })
 
 //Updates admin login - post with uname and pword in url
-router.post('/api/admin/update/:uname/:pword',(req, res) => {
+router.post('/admin/update/:uname/:pword',(req, res) => {
   updateAdminLogin(req.params['uname'], req.params['pword'], res)
 })
 
