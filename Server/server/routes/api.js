@@ -20,7 +20,6 @@ router.post('/admin/delete/:uname', (req, res) => {
 router.get('/admin/:uname', (req, res) => {
   getAdminLogin(req.params['uname'], res);
 })
-//--------End of Admin Login Locations--------
 
 //Adds admin login - post with uname and pword in url
 router.post('/admin/add/:uname/:pword',(req, res) => {
@@ -31,6 +30,8 @@ router.post('/admin/add/:uname/:pword',(req, res) => {
 router.post('/admin/update/:uname/:pword',(req, res) => {
   updateAdminLogin(req.params['uname'], req.params['pword'], res)
 })
+
+//--------End of Admin Login Locations--------
 
 //-------Reservation API Locations------
 //Create reservation - post with form information in json format
