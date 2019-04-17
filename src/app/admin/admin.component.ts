@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiCallsService } from '../api-calls.service';
-import { Observable } from 'rxjs';
-import { Movie } from '../movie'
+import { User } from '../../assets/models/user';
+
+// import { Movie } from '../movie';
 
 @Component({
   selector: 'app-admin',
@@ -10,12 +11,19 @@ import { Movie } from '../movie'
 })
 export class AdminComponent implements OnInit {
 
-  movieData: Movie;
+  // Example
+  // movieData: Movie;
+
+  // login variables
+  loginSuccessful: boolean;
+  currentUser: User;
+
 
   constructor(private apiService: ApiCallsService) { }
 
   ngOnInit() {
     // this.getMovieTitle();
+    this.loginSuccessful = false;
   }
 
   // Example
@@ -27,5 +35,24 @@ export class AdminComponent implements OnInit {
   //       console.log(this.movieData.title);      
   //     });
   // }
+
+  // When user clicks login, check if they are valid
+  login(username: string, passwrd: string) {
+    this.loginSuccessful = false;
+    this.apiService.login(username)
+      .subscribe(data => {
+        this.currentUser = new User(data);
+        if (this.currentUser.password == passwrd) {
+          this.loginSuccessful = true;
+        } else 
+        {
+          this.loginSuccessful = false;          
+        }
+        console.log('Login successful: ' + this.loginSuccessful);
+      });   
+  }
+
+  // When user logs in successfully, show the data
+  
 
 }

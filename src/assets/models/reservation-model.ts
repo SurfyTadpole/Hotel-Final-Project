@@ -1,4 +1,4 @@
-import { RoomType } from './room-type.enum';
+import { RoomType } from '../../app/room-type.enum'
 
 export class ReservationModel {
     arrivalDate: Date;

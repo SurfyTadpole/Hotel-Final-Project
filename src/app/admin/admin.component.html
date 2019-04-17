@@ -1,26 +1,36 @@
 <h1 id="title">Admin</h1>
+<h4>Current Admin:
+        <div id="CurrentAdmins" *ngIf="this.loginSuccessful">
+            {{this.currentUser.username}}
+        </div>
+    </h4>
 <!-- <h1>Title: {{movieData.title}}</h1> -->
 
-<div id="login">
+<div id="login" [hidden]="this.loginSuccessful">
     <form>
         <div>
             <label for="username"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="username" required>
+            <input #username type="text" placeholder="Enter Username" name="username" required>
 
             <label for="password"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" required>
+            <input #password type="password" placeholder="Enter Password" name="password" required>
 
-            <button type="button" id="loginbtn">Login</button>
+            <button type="button" id="loginbtn" (click)="login(username.value, password.value)">Login</button>
         </div>
     </form>
 </div>
 
-<div id="admin">
+<div id="admin">    
     <h3>Room Rates:</h3>
+    <div id="RoomRates" [hidden]="!this.loginSuccessful">
+        <p>Stuff here</p>
+    </div>
     <h3>Current Reservations:</h3>
-    <h3>Current Admins:</h3>
+    <div id="CurrentReservations" [hidden]="!this.loginSuccessful">
+        <p>Stuff here</p>
+    </div>
+
 
     <button type="button" id="edit">Edit</button>
     <button type="button" id="edit">Update</button>
 </div>
-
