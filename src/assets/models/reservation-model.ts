@@ -1,13 +1,26 @@
-import { RoomType } from '../../app/room-type.enum'
+import { RoomType } from '../../app/room-type.enum';
 
 export class ReservationModel {
-    arrivalDate: Date;
-    departureDate: Date;
+    arrDate: Date;
+    depDate: Date;
     numGuests: number;
     requests: string;
     firstName: string;
     lastName: string;
-    phoneNumber: string;
-    emailAddress: string;
+    phone: string;
+    email: string;
     roomType: RoomType;
+
+    constructor(arrivalDate: Date, departureDate: Date, numGuests: number, requests: string,
+        firstName: string, lastName: string, phone: string, email: string, roomType: RoomType) {
+            this.arrDate = arrivalDate;
+            this.depDate = departureDate;
+            this.numGuests = numGuests;
+            this.requests = requests;
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.phone = phone;
+            this.email = email;
+            this.roomType = roomType;
+    }
 }

@@ -4,45 +4,45 @@
     <form action="" id="reservationForm">
 
         <label for="arrDate">Arrival Date</label>
-        <input type="date" id="arrDate" name="arrivalDate" placeholder="">
+        <input #arrDate type="date" id="arrDate" name="arrivalDate" placeholder="">
         <br>
 
         <label for="depDate">Departure Date</label>
-        <input type="date" id="deptDate" name="departureDate" placeholder="">
+        <input #depDate type="date" id="deptDate" name="departureDate" placeholder="">
         <br>
 
         <label for="numGuests">Number of Guests</label>
-        <input type="number" id="numGuests" name="NumOfGuests" placeholder="">
+        <input #numGuests type="number" id="numGuests" name="NumOfGuests" placeholder="">
         <br>
 
         <label for="requests">Special Requests</label>
-        <textarea id="requests" name="requests" placeholder="Write something.." style="height:100px"></textarea>
+        <textarea #requests id="requests" name="requests" placeholder="Write something.." style="height:100px"></textarea>
         <br>
 
         <label for="firstName">First Name</label>
-        <input type="text" id="firstName" name="firstName" placeholder="Your name..">
+        <input #firstName type="text" id="firstName" name="firstName" placeholder="Your name..">
         <br>
 
         <label for="lastName">Last Name</label>
-        <input type="text" id="lastName" name="lastName" placeholder="Your last name..">
+        <input #lastName type="text" id="lastName" name="lastName" placeholder="Your last name..">
         <br>
 
         <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone" placeholder="Your phone number..">
+        <input #phone type="tel" id="phone" name="phone" placeholder="Your phone number..">
         <br>
 
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="Your email..">
+        <input #email type="email" id="email" name="email" placeholder="Your email..">
         <br>
 
         <div id="roomType">
             <label>Type of Room:</label>
-            <input type="radio" name="roomType" value="deluxe">Deluxe
-            <input type="radio" name="roomType" value="suite"> Suite
-            <input type="radio" name="roomType" value="regular"> Regular <br>
+            <input type="radio" name="roomType" ng-model="roomType" value="Deluxe">Deluxe
+            <input type="radio" name="roomType" ng-model="roomType" value="Suite"> Suite
+            <input type="radio" name="roomType" ng-model="roomType" value="Regular"> Regular <br>
         </div>
         <br><br>
 
-        <button type="button" onclick="window.location.href = '/summary';" id="submit">Submit</button>
+        <button type="button" (click) ="submitReservation(arrDate.value, depDate.value, numGuests.value, requests.value, firstName.value, lastName.value, phone.value, email.value)" id="submit">Submit</button>
     </form>
 </div>

@@ -33,4 +33,10 @@ export class ApiCallsService {
     return this.http.get<User>(this.baseUrl + '/admin/' + username);
   }
 
+  submitReservation(reservation: string) {
+    this.getBaseUrl();
+    var results = this.http.post(this.baseUrl + '/reservation', reservation);
+    return results;
+  }
+
 }

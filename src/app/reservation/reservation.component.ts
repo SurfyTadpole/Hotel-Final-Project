@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiCallsService } from '../api-calls.service';
+import { RoomType } from '../room-type.enum';
+import { ReservationModel } from 'src/assets/models/reservation-model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reservation',
@@ -7,9 +11,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReservationComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private apiService: ApiCallsService,
+    private router: Router
+  ) { }
+
+  // value from room type radio buttons
+  roomType: RoomType;
 
   ngOnInit() {
+  }
+
+  submitReservation(arrivalDate: Date, departureDate: Date, numGuests: number, requests: string,
+    firstName: string, lastName: string, phone: string, email: string) {
+      var newReservation: ReservationModel = new ReservationModel(arrivalDate, departureDate, numGuests,
+        requests, firstName, lastName, phone, email, this.roomType);
+
+      var reservationJSON = JSON.stringify(newReservation);
+      this.apiService.submitReservation(reservationJSON);
+      this.router.navigate(['/summary']);
   }
 
 }
