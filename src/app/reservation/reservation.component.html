@@ -37,9 +37,9 @@
 
         <div id="roomType">
             <label>Type of Room:</label>
-            <input type="radio" name="roomType" ng-model="roomType" value="Deluxe">Deluxe
-            <input type="radio" name="roomType" ng-model="roomType" value="Suite"> Suite
-            <input type="radio" name="roomType" ng-model="roomType" value="Regular"> Regular <br>
+            <input type="radio" name="roomType" ng-model="roomType" value="d" (click)="showValue('d')">Deluxe
+            <input type="radio" name="roomType" ng-model="roomType" value="s" (click)="showValue('s')"> Suite
+            <input type="radio" name="roomType" ng-model="roomType" value="r" (click)="showValue('r')"> Regular <br>
         </div>
         <br><br>
 

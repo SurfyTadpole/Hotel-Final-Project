@@ -9,10 +9,10 @@ export class ReservationModel {
     lastName: string;
     phone: string;
     email: string;
-    roomType: RoomType;
+    roomType: string;
 
     constructor(arrivalDate: Date, departureDate: Date, numGuests: number, requests: string,
-        firstName: string, lastName: string, phone: string, email: string, roomType: RoomType) {
+        firstName: string, lastName: string, phone: string, email: string, roomType: string) {
             this.arrDate = arrivalDate;
             this.depDate = departureDate;
             this.numGuests = numGuests;

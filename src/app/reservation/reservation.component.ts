@@ -17,7 +17,7 @@ export class ReservationComponent implements OnInit {
   ) { }
 
   // value from room type radio buttons
-  roomType: RoomType;
+  roomType: string;
 
   ngOnInit() {
   }
@@ -27,9 +27,16 @@ export class ReservationComponent implements OnInit {
       var newReservation: ReservationModel = new ReservationModel(arrivalDate, departureDate, numGuests,
         requests, firstName, lastName, phone, email, this.roomType);
 
-      var reservationJSON = JSON.stringify(newReservation);
+      var reservationJSON = JSON.stringify(newReservation);      
       this.apiService.submitReservation(reservationJSON);
+      console.log('Room type: ' + this.roomType);
+      console.log(reservationJSON);
       this.router.navigate(['/summary']);
+  }
+
+  showValue(type: string) {
+    this.roomType = type;
+    console.log(this.roomType);
   }
 
 }
