@@ -1,9 +1,9 @@
 <h1 id="title">Admin</h1>
 <h4>Current Admin:
-        <div id="CurrentAdmins" *ngIf="this.loginSuccessful">
-            {{this.currentUser.username}}
-        </div>
-    </h4>
+    <div id="CurrentAdmins" *ngIf="this.loginSuccessful">
+        {{this.currentUser.username}}
+    </div>
+</h4>
 <!-- <h1>Title: {{movieData.title}}</h1> -->
 
 <div id="login" [hidden]="this.loginSuccessful">
@@ -21,13 +21,34 @@
 </div>
 
 <div id="logout" [hidden]="!this.loginSuccessful">
-    
+
 </div>
 
-<div id="admin">    
+<div id="admin">
     <h3>Room Rates:</h3>
     <div id="RoomRates" [hidden]="!this.loginSuccessful">
         <p>Stuff here</p>
+        <table>
+            <thead>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Guests</td>
+                <td>Room Type</td>
+                <td>Arrival Date</td>
+                <td>Departure Date</td>
+            </thead>
+            <tbody>
+                <tr *ngFor="let reservation of this.allReservations | async">
+                    <td>{{reservation.firstName}}</td>
+                    <td>{{reservation.lastName}}</td>
+                    <td>{{reservation.numGuests}}</td>                    
+                    <td>{{reservation.roomType}}</td>
+                    <td>{{reservation.arrDate}}</td>
+                    <td>{{reservation.depDate}}</td>
+                    <td><button type="button" (click)="deleteReservation(reservation)">Delete</button></td>                    
+                </tr>
+            </tbody>
+        </table>
     </div>
     <h3>Current Reservations:</h3>
     <div id="CurrentReservations" [hidden]="!this.loginSuccessful">

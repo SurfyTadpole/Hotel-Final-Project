@@ -2,6 +2,8 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { DOCUMENT } from '@angular/common';
 import { User } from '../assets/models/user';
+import { ReservationModel } from 'src/assets/models/reservation-model';
+import { ReservationDto } from 'src/assets/models/reservation-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -28,8 +30,6 @@ export class ApiCallsService {
 
   login(username: string) {
     this.getBaseUrl();
-    console.log('baseUrl: ' + this.baseUrl);
-    console.log(this.baseUrl + '/admin/' + username);
     return this.http.get<User>(this.baseUrl + '/admin/' + username);
   }
 
@@ -37,6 +37,16 @@ export class ApiCallsService {
     this.getBaseUrl();
     var results = this.http.post(this.baseUrl + '/reservation', reservation);
     return results;
+  }
+
+  getAllReservations() {
+    this.getBaseUrl();
+    return this.http.get<ReservationDto[]>(this.baseUrl + '/reservations');
+  }
+
+  deleteReservation(reservationId: string) {
+    this.getBaseUrl();
+    return this.http.post(this.baseUrl + '/reservation/delete/' + reservationId, reservationId);
   }
 
 }

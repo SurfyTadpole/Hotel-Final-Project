@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiCallsService } from '../api-calls.service';
 import { User } from '../../assets/models/user';
+import { ReservationModel } from 'src/assets/models/reservation-model';
+import { Observable } from 'rxjs';
+import { ReservationDto } from 'src/assets/models/reservation-dto';
 
 // import { Movie } from '../movie';
 
@@ -17,6 +20,8 @@ export class AdminComponent implements OnInit {
   // login variables
   loginSuccessful: boolean;
   currentUser: User;
+
+  allReservations: Observable<any[]>;
 
 
   constructor(private apiService: ApiCallsService) { }
@@ -44,6 +49,7 @@ export class AdminComponent implements OnInit {
         this.currentUser = new User(data);
         if (this.currentUser.password == passwrd) {
           this.loginSuccessful = true;
+          this.doSuccessfulLogin();
         } else 
         {
           this.loginSuccessful = false;          
@@ -52,7 +58,18 @@ export class AdminComponent implements OnInit {
       });   
   }
 
-  // When user logs in successfully, show the data
-  // TODO  
 
+
+  // When user logs in successfully, show the data
+  doSuccessfulLogin() {
+    this.showAllReservations();
+  }
+
+  showAllReservations() {
+    this.allReservations = this.apiService.getAllReservations();
+  }
+
+  deleteReservation(reservation: ReservationDto) {
+    this.apiService.deleteReservation(reservation._id);
+  }
 }
