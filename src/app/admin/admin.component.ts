@@ -4,6 +4,7 @@ import { User } from '../../assets/models/user';
 import { ReservationModel } from 'src/assets/models/reservation-model';
 import { Observable } from 'rxjs';
 import { ReservationDto } from 'src/assets/models/reservation-dto';
+import { UserDto } from 'src/assets/models/user-dto';
 
 // import { Movie } from '../movie';
 
@@ -57,7 +58,9 @@ export class AdminComponent implements OnInit {
       });
   }
 
-
+  logout() {
+    this.loginSuccessful = false;
+  }
 
   // When user logs in successfully, show the data
   doSuccessfulLogin() {
@@ -69,6 +72,12 @@ export class AdminComponent implements OnInit {
   }
 
   deleteReservation(reservation: ReservationDto) {
-    this.apiService.deleteReservation(reservation._id);
+    this.apiService.deleteReservation(reservation._id).subscribe();
+    this.showAllReservations();
+  }
+
+  createNewAdmin(username: string, password: string) {
+    var newAdmin = new UserDto(username, password);
+    this.apiService.createNewAdmin(newAdmin).subscribe();
   }
 }

@@ -4,6 +4,7 @@ import { DOCUMENT } from '@angular/common';
 import { User } from '../assets/models/user';
 import { ReservationModel } from 'src/assets/models/reservation-model';
 import { ReservationDto } from 'src/assets/models/reservation-dto';
+import { UserDto } from 'src/assets/models/user-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +15,6 @@ export class ApiCallsService {
     private http: HttpClient,
     @Inject(DOCUMENT) private document: Document
   ) { }
-
-  // Example
-  // movieCallUrl: string = 'http://www.omdbapi.com/?t=avengers+endgame&apikey=36f49728';
-  // getMovieTitle() {
-  //   return this.http.get<any[]>(this.movieCallUrl);
-  // }
 
   baseUrl: string;
   id: string;
@@ -42,6 +37,7 @@ export class ApiCallsService {
         'Content-Type': 'application/json'
       })
     };
+    return this.http.post(this.baseUrl + '/reservation', reservation, options);
   }
 
   getAllReservations() {
@@ -51,7 +47,11 @@ export class ApiCallsService {
 
   deleteReservation(reservationId: string) {
     this.getBaseUrl();
-    return this.http.post(this.baseUrl + '/reservation/delete/' + reservationId, reservationId);
+    return this.http.post(this.baseUrl + '/reservation/delete/' + reservationId, '');
   }
 
+  createNewAdmin(newUser: UserDto) {
+    this.getBaseUrl();
+    return this.http.post(this.baseUrl + '/admin/add/' + newUser.username + '/' + newUser.password, '');
+  }
 }

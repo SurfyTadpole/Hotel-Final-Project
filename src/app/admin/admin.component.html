@@ -1,7 +1,9 @@
 <h1 id="title">Admin</h1>
 <h4>Current Admin:
     <div id="CurrentAdmins" *ngIf="this.loginSuccessful">
-        {{this.currentUser.username}}
+        <div id="logout" [hidden]="!this.loginSuccessful">
+            {{this.currentUser.username}} <button type="button" id="logoutbtn" (click)="logout()">Logout</button>
+        </div>
     </div>
 </h4>
 <!-- <h1>Title: {{movieData.title}}</h1> -->
@@ -20,14 +22,9 @@
     </form>
 </div>
 
-<div id="logout" [hidden]="!this.loginSuccessful">
-
-</div>
-
-<div id="admin">
-    <h3>Room Rates:</h3>
-    <div id="RoomRates" [hidden]="!this.loginSuccessful">
-        <p>Stuff here</p>
+<div id="admin" [hidden]="!this.loginSuccessful">
+    <h3>Current Reservations:</h3>
+    <div id="CurrentReservations" [hidden]="!this.loginSuccessful">
         <table>
             <thead>
                 <td>First Name</td>
@@ -36,26 +33,39 @@
                 <td>Room Type</td>
                 <td>Arrival Date</td>
                 <td>Departure Date</td>
+                <td>Phone</td>
+                <td>Email</td>
             </thead>
             <tbody>
                 <tr *ngFor="let reservation of this.allReservations | async">
                     <td>{{reservation.firstName}}</td>
                     <td>{{reservation.lastName}}</td>
-                    <td>{{reservation.numGuests}}</td>                    
+                    <td>{{reservation.numGuests}}</td>
                     <td>{{reservation.roomType}}</td>
                     <td>{{reservation.arrDate}}</td>
                     <td>{{reservation.depDate}}</td>
-                    <td><button type="button" (click)="deleteReservation(reservation)">Delete</button></td>                    
+                    <td>{{reservation.phone}}</td>
+                    <td>{{reservation.email}}</td>
+                    <td><button type="button" (click)="deleteReservation(reservation)">Delete</button></td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <h3>Current Reservations:</h3>
-    <div id="CurrentReservations" [hidden]="!this.loginSuccessful">
-        <p>Stuff here</p>
+    <h3>Create New Admin:</h3>
+    <div id="NewAdmin" [hidden]="!this.loginSuccessful">
+        <form>
+            <div>
+                <label for="newUsername"><b>Username</b></label>
+                <input #newUsername type="text" placeholder="Enter Username" name="newUsername" required>
+
+                <label for="newPassword"><b>Password</b></label>
+                <input #newPassword type="password" placeholder="Enter Password" name="newPassword" required>
+
+                <button type="button" id="newAdminbtn"
+                    (click)="createNewAdmin(newUsername.value, newPassword.value)">Add
+                    New Admin
+                    User</button>
+            </div>
+        </form>
     </div>
-
-
-    <button type="button" id="edit">Edit</button>
-    <button type="button" id="edit">Update</button>
 </div>

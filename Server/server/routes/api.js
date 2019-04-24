@@ -44,7 +44,7 @@ router.post('/reservation/update/:id',(req, res) => {
   updateReservation(req.body, req.params['id'], res);
 })
 
-//Update reservation - post with form information - based on phone number
+//Delete reservation - post with form information
 router.post('/reservation/delete/:id',(req, res) => {
   deleteReservation(req.params['id'], res);
 })
@@ -94,10 +94,11 @@ function getAllReservations(response) {
   client.connect(err => {
     if (err) {
       sendBadResponse(response);
-      throw err;
+      throw (err);
     }
     const collection = client.db("HotelReservationDB").collection("reservations");
-    JSON.stringify(collection.find({}).toArray(function (err, res) {
+    var query = { };
+    collection.find({}).toArray(function(err, result) {
       if (err) {
         sendBadResponse(response);
         throw (err);
