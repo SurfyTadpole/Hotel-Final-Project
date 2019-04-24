@@ -54,10 +54,11 @@ router.get('/reservation/:id',(req, res) => {
   getReservation(req.params['id'], res);
 })
 
-//Get all reservations
+
 router.get('/reservations',(req, res) => {
-  getReservations(res);
+  getAllReservations(res);
 })
+
 //-------End Reservation API Locations------
 
 function sendGoodResponse(res) {
@@ -88,16 +89,15 @@ function getReservation(id, response) {
   });
 }
 
-function getReservations(response) {
+function getAllReservations(response) {
   var client = new MongoClient(uri, { useNewUrlParser: true });
   client.connect(err => {
     if (err) {
       sendBadResponse(response);
-      throw (err);
+      throw err;
     }
     const collection = client.db("HotelReservationDB").collection("reservations");
-    var query = { };
-    collection.find({}).toArray(function(err, result) {
+    JSON.stringify(collection.find({}).toArray(function (err, res) {
       if (err) {
         sendBadResponse(response);
         throw (err);

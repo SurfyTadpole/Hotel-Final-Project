@@ -36,9 +36,8 @@ export class AdminComponent implements OnInit {
   //   this.apiService.getMovieTitle()
   //     .subscribe(data => {
   //       console.log(data);
-  //       this.movieData = new Movie(data); 
-  //       console.log(this.movieData.title);      
-  //     });
+  //       this.movieData = new Movie(data);
+  //       console.log(this.movieData.title);
   // }
 
   // When user clicks login, check if they are valid
@@ -47,7 +46,7 @@ export class AdminComponent implements OnInit {
     this.apiService.login(username)
       .subscribe(data => {
         this.currentUser = new User(data);
-        if (this.currentUser.password == passwrd) {
+        if (this.currentUser.password === passwrd) {
           this.loginSuccessful = true;
           this.doSuccessfulLogin();
         } else 
@@ -55,7 +54,7 @@ export class AdminComponent implements OnInit {
           this.loginSuccessful = false;          
         }
         console.log('Login successful: ' + this.loginSuccessful);
-      });   
+      });
   }
 
 

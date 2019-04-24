@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiCallsService } from '../api-calls.service';
+import { Router } from '@angular/router';
+import { ReservationModel } from 'src/assets/models/reservation-model';
 
 @Component({
   selector: 'app-summary',
@@ -7,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SummaryComponent implements OnInit {
 
-  constructor() { }
+  constructor(private apiService: ApiCallsService) { }
 
   ngOnInit() {
   }
