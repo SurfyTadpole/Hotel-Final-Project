@@ -53,6 +53,12 @@ router.post('/reservation/delete/:id',(req, res) => {
 router.get('/reservation/:id',(req, res) => {
   getReservation(req.params['id'], res);
 })
+
+
+router.get('/reservations',(req, res) => {
+  getAllReservations(res);
+})
+
 //-------End Reservation API Locations------
 
 function sendGoodResponse(res) {
@@ -80,6 +86,26 @@ function getReservation(id, response) {
       client.close();
       response.send(res);
     });
+  });
+}
+
+function getAllReservations(response) {
+  var client = new MongoClient(uri, { useNewUrlParser: true });
+  client.connect(err => {
+    if (err) {
+      sendBadResponse(response);
+      throw err;
+    }
+    const collection = client.db("HotelReservationDB").collection("reservations");
+    JSON.stringify(collection.find({}).toArray(function (err, res) {
+      if (err) {
+        sendBadResponse(response);
+        throw (err);
+      }
+      console.log("Document Found");
+      client.close();
+      response.send(res);
+    }));
   });
 }
 
