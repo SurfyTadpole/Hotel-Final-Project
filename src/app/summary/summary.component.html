@@ -4,36 +4,32 @@
 <div id="summary">
     <form action="" id="reservationForm">
         <label for="arrDate">Arrival Date</label>
-        <input type="date" id="arrDate" name="arrivalDate" readonly>
+        <input type="date" id="arrDate" name="arrivalDate" readonly value="{{this.reservation.arrDate}}">
         <br>
         <label for="depDate">Departure Date</label>
-        <input type="date" id="deptDate" name="departureDate" readonly>
+        <input type="date" id="deptDate" name="departureDate" readonly value="{{this.reservation.depDate}}">
         <br>
         <label for="numGuests">Number of Guests</label>
-        <input type="number" id="numGuests" name="NumOfGuests" readonly>
+        <input type="number" id="numGuests" name="NumOfGuests" readonly value="{{this.reservation.numGuests}}">
         <br>
         <label for="requests">Special Requests</label>
-        <textarea id="requests" name="requests" readonly style="height:100px"></textarea>
+        <textarea id="requests" name="requests" readonly style="height:100px" value="{{this.reservation.requests}}"></textarea>
         <br>
         <label for="firstName">First Name</label>
-        <input type="text" id="firstName" name="firstName" readonly>
+        <input type="text" id="firstName" name="firstName" readonly value="{{this.reservation.firstName}}">
         <br>
         <label for="lastName">Last Name</label>
-        <input type="text" id="lastName" name="lastName" readonly>
+        <input type="text" id="lastName" name="lastName" readonly value="{{this.reservation.lastName}}">
         <br>
         <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone" readonly>
+        <input type="tel" id="phone" name="phone" readonly value="{{this.reservation.phone}}">
         <br>
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" readonly>
+        <input type="email" id="email" name="email" readonly value="{{this.reservation.email}}">
         <br>
         <div id="roomType">
-            <label>Type of Room:</label>
-            <input type="radio" name="roomType" value="deluxe">Deluxe
-            <input type="radio" name="roomType" value="suite"> Suite
-            <input type="radio" name="roomType" value="regular"> Regular <br>
+            <label>Type of Room: {{this.roomType}}</label>
+            
         </div>
-        <br><br>
-        <button type="button" onclick="window.location.href = '/reservation';" id="edit">Edit</button>
     </form>
 </div>

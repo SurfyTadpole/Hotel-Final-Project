@@ -54,4 +54,9 @@ export class ApiCallsService {
     this.getBaseUrl();
     return this.http.post(this.baseUrl + '/admin/add/' + newUser.username + '/' + newUser.password, '');
   }
+
+  getReservation(id: String){
+    this.getBaseUrl();
+    return this.http.get<ReservationDto>(this.baseUrl + '/reservation/' + id);
+  }
 }
